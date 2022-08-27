@@ -4,7 +4,9 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "node app.js",
+    "start": "node app.js"
   },
   "repository": {
     "type": "git",
@@ -17,7 +19,14 @@
   },
   "homepage": "https://github.com/SMSH-2022/Backend#readme",
   "dependencies": {
+    "dotenv": "^16.0.1",
+    "ejs": "^3.1.8",
     "express": "^4.18.1",
-    "nodemon": "^2.0.19"
+    "mongoose": "^6.5.3",
+    "morgan": "^1.10.0",
+    "mysql2": "^2.3.3",
+    "nodemon": "^2.0.19",
+    "sequelize": "^6.21.4",
+    "sequelize-cli": "^6.4.1"
   }
 }
