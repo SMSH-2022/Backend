@@ -35,6 +35,8 @@ app.get('/', (req, res) => {
 app.use('/board', postRouter);
 app.use(morgan('dev'));
 
+
+
 //view 연결
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
@@ -135,6 +137,8 @@ passport.use(
   )
 );
 
+
+
 //구글 로그인 버튼 클릭시 구글 페이지로 이동하는 역할
 app.get(
   '/auth/google',
@@ -152,6 +156,7 @@ app.get(
 
 //홈페이지 생성 (req.user는 passport의 serialize를 통해 user 정보 저장되어있음)
 app.get('/', (req, res) => {
+  console.log(db,"#############");
   const temp = getPage('Welcome', 'Welcome to visit...', getBtn(req.user));
   res.send(temp);
 });
@@ -181,6 +186,7 @@ const getBtn = (user) => {
     : `<a href="/auth/google">Google Login</a>`;
 };
 
+
 //페이지 생성 함수
 const getPage = (title, description, auth) => {
   return `
@@ -200,6 +206,9 @@ const getPage = (title, description, auth) => {
         </html>
         `;
 };
+
+exports.db = db;
+
 
 //SERVER
 // app.listen(3000, () => console.log('http://localhost:3000'));
