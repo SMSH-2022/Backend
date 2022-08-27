@@ -1,0 +1,16 @@
+GET http://localhost:3000/posts
+
+###
+POST http://localhost:3000/posts
+Content-Type: application/json
+
+{
+    "id":4,
+    "name":"haiely",
+    "team":"server",
+    "position":"server",
+    "emailAdress":"dayeon65@gmail.com",
+    "phoneNumber":"01041032062",
+    "birthday":"010218",
+    "profileImage":"ppp.img"
+}
