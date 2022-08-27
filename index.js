@@ -72,7 +72,10 @@ const googleCredentials = {
   web: {
     client_id: process.env.CLIENT_ID,
     client_secret: process.env.CLIENT_SECRET,
-    redirect_uris: ['http://localhost:3000/auth/google/callback'],
+    redirect_uris: [
+      'ttps://gennies-server-deploy.herokuapp.com/auth/google/callback',
+    ],
+    //https://gennies-server-deploy.herokuapp.com/
   },
 };
 
