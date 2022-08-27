@@ -104,7 +104,7 @@ app.get(
 );
 
 //홈페이지 생성 (req.user는 passport의 serialize를 통해 user 정보 저장되어있음)
-app.get('/', (req, res) => {
+app.get('/start', (req, res) => {
   const temp = getPage('Welcome', 'Welcome to visit...', getBtn(req.user));
   res.send(temp);
 });
