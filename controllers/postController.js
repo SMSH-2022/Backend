@@ -1,15 +1,34 @@
 const Post = require('../models/post');
+// import db from "../app"
+const db = require("../app");
 
 // 모든 게시글 조회
 const getAllPost = async (req, res) => {
     try {
-      const posts = await Post.find({});
-      res.status(200).render('board', { posts });
+      //if -> user.name이 없으면 -> 다시 처음페이지로 redirect
+      console.log(db,"########여기다#####");
+      // let user = db.db[1]
+      // console.log(user);
+      if(db.db[1]){
+        console.log("있음");
+        const posts = await Post.find({});
+        res.status(200).render('board', { posts });
+      }else{
+        console.log("없음");
+        res.redirect('/');
+      }
+      // const posts = await Post.find({});
+      // res.status(200).render('board', { posts });
     } catch (error) {
       res.status(400).send({ error: error.message });
     }
 };
 
+//홈페이지 생성 (req.user는 passport의 serialize를 통해 user 정보 저장되어있음)
+// app.get('/', (req, res) => {
+//   const temp = getPage('Welcome', 'Welcome to visit...', getBtn(req.user));
+//   res.send(temp);
+// });
 
 
 // 게시글 작성 GET / POST
@@ -33,6 +52,7 @@ const postWrite = async (req, res) => {
         contents,
         writer,
       });
+      console.log(writer,"**********")
       res.redirect(`/board/post/${post._id}`);
       // 게시글을 작성한 뒤, 해당 게시글의 상세 페이지로 이동
     } catch (error) {
