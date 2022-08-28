@@ -5,9 +5,9 @@ require('dotenv').config();
 
 mongoose.connect(process.env.MONGO_URL, {
   // MongoDB 연결
-//   useNewUrlParser: true,
-//   useFindAndModify: false,
-//   useUnifiedTopology: true,
+  //   useNewUrlParser: true,
+  //   useFindAndModify: false,
+  //   useUnifiedTopology: true,
   // MongoDB 버전에 따라 발생하는 오류를 해결하기 위한 옵션
 });
 
@@ -24,4 +24,3 @@ db.once('open', handleConnection);
 // DB 정상 연결 시 handleConnection 함수 실행
 db.on('error', handleError);
 // DB 에러 발생 시 handleError 함수 실행
-
