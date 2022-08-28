@@ -55,7 +55,7 @@ require('dotenv').config();
 // const app = express();
 
 //기본 회원정보 (웹 실무시 데이터 베이스로 대체 하면됨)
-let temp_db = [
+let db = [
   {
     id: '1',
     email: 'goodmemory@tistory.com',
@@ -114,7 +114,7 @@ passport.use(
     },
     function (accessToken, refreshToken, profile, done) {
       console.log(profile);
-      let user = temp_db.find(
+      let user = db.find(
         (userInfo) => userInfo.email === profile.emails[0].value
       );
       if (user) {
@@ -131,7 +131,7 @@ passport.use(
           name: profile.displayName,
           email: profile.emails[0].value,
         };
-        temp_db.push(user);
+        db.push(user);
       }
       return done(null, user);
     }
@@ -155,7 +155,7 @@ app.get(
 
 //홈페이지 생성 (req.user는 passport의 serialize를 통해 user 정보 저장되어있음)
 app.get('/', (req, res) => {
-  console.log(temp_db, '#############');
+  console.log(db, '#############');
   const temp = getPage('Welcome', 'Welcome to visit...', getBtn(req.user));
   res.send(temp);
 });
@@ -205,7 +205,7 @@ const getPage = (title, description, auth) => {
         `;
 };
 
-exports.temp_db = temp_db;
+exports.db = db;
 
 //SERVER
 // app.listen(3000, () => console.log('http://localhost:3000'));
