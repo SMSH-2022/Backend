@@ -5,20 +5,8 @@ const db = require('../index');
 // 모든 게시글 조회
 const getAllPost = async (req, res) => {
   try {
-    //if -> user.name이 없으면 -> 다시 처음페이지로 redirect
-    console.log(db, '########여기다#####');
-    // let user = db.db[1]
-    // console.log(user);
-    if (db.db[1]) {
-      console.log('있음');
-      const posts = await Post.find({});
-      res.status(200).render('board', { posts });
-    } else {
-      console.log('없음');
-      res.redirect('/');
-    }
-    // const posts = await Post.find({});
-    // res.status(200).render('board', { posts });
+    const posts = await Post.find({});
+    res.status(200).render('board', { posts });
   } catch (error) {
     res.status(400).send({ error: error.message });
   }
