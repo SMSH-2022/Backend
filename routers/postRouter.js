@@ -1,18 +1,16 @@
 const express = require('express');
 const postRouter = express.Router();
 
-
 const {
-    getAllPost,
-    getWrite,
-    postWrite,
-    getOnePost,
-    getEditPost,
-    postEditPost,
-    deleteOnePost,
-    deleteAllPost,
+  getAllPost,
+  getWrite,
+  postWrite,
+  getOnePost,
+  getEditPost,
+  postEditPost,
+  deleteOnePost,
+  deleteAllPost,
 } = require('../controllers/postController');
-
 
 // 모든 게시글 조회
 postRouter.get('/', getAllPost);
